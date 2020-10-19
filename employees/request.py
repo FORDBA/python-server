@@ -86,18 +86,13 @@ def create_employee(employee):
 
 def delete_employee(id):
     
-    employee_index = None
+    with sqlite3.connect("./kennel.db") as conn:
+        db_cursor = conn.cursor()
 
-   
-    for index, employee in enumerate(EMPLOYEES):
-        if employee["id"] == id:
-            
-            employee_index = index
-            break
-
-    
-    if employee_index is not None:
-        EMPLOYEES.pop(employee_index)
+        db_cursor.execute("""
+        DELETE FROM employee
+        WHERE id = ?
+        """, (id, ))
 
 def update_employee(id, new_employee):
     

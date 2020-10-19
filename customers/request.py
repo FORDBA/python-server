@@ -90,18 +90,17 @@ def create_customer(customer):
 
 def delete_customer(id):
     
-    customer_index = None
+    with sqlite3.connect("./kennel.db") as conn:
+        db_cursor = conn.cursor()
 
-   
-    for index, customer in enumerate(CUSTOMERS):
-        if customer["id"] == id:
-            
-            customer_index = index
-            break
+        db_cursor.execute("""
+        DELETE FROM customer
+        WHERE id = ?
+        """, (id, ))
+
 
     
-    if customer_index is not None:
-        CUSTOMERS.pop(customer_index)
+    
 
 def update_customer(id, new_customer):
     

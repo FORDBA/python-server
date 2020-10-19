@@ -3,7 +3,7 @@
         {
             "previewLimit": 50,
             "driver": "SQLite",
-            "name": "PYTHON KENNELS",
+            "name": "Kennels Python Server",
             "database": "${workspaceFolder:python-server}/kennel.db"
         }
     ],

@@ -18,7 +18,7 @@ CREATE TABLE `Animal` (
 	`status` TEXT NOT NULL,
 	`breed` TEXT NOT NULL,
 	`customer_id` INTEGER NOT NULL,
-	`location_id` INTEGER,
+	`location_id` INTEGER NOT NULL,
 	FOREIGN KEY(`customer_id`) REFERENCES `Customer`(`id`),
 	FOREIGN KEY(`location_id`) REFERENCES `Location`(`id`)
 );
@@ -55,3 +55,23 @@ INSERT INTO `Animal` VALUES (null, "Jax", "Treatment", "Beagle", 1, 1);
 INSERT INTO `Animal` VALUES (null, "Falafel", "Treatment", "Siamese", 4, 2);
 INSERT INTO `Animal` VALUES (null, "Doodles", "Kennel", "Poodle", 3, 1);
 INSERT INTO `Animal` VALUES (null, "Daps", "Kennel", "Boxer", 2, 2);
+
+
+SELECT * From 'Animal'
+SELECT * From 'Location'
+SELECT * From 'Customer'
+SELECT * From 'Employee'
+
+
+SELECT
+    a.id,
+    a.name,
+    a.breed,
+    a.status,
+    a.location_id,
+    a.customer_id,
+    l.name location_name,
+    l.address location_address
+FROM Animal a
+JOIN Location l
+    ON l.id = a.location_id
